@@ -32,9 +32,6 @@ http://localhost:3000
 * **Tailwind CSS** – utility-first styling
 * **TypeScript** – typed JavaScript
 * **Heroicons** – beautiful SVG icons
-* **Shadcn UI (optional)** – for future UI polish
-* **Geist Font** – clean and modern typography by Vercel
-
 ---
 
 ## ✨ Features
@@ -45,7 +42,7 @@ http://localhost:3000
 * 📩 Optional email input for receipt
 * ✅ Purchase confirmation alert
 * 🎨 Dark-themed with neon-style accents
-* 📱 Responsive design (mobile-friendly)
+* 📱 Responsive design
 
 ---
 
@@ -68,8 +65,6 @@ app/
 * Integrate real payment gateway (e.g. ToyyibPay, Stripe)
 * Store orders in Firebase or Supabase
 * Admin dashboard for order management
-* Add rank boosting & derank services
-* UI polish using Figma AI-generated layouts
 
 ---
 
