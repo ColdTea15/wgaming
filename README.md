@@ -79,6 +79,12 @@ The easiest way to deploy is via **[Vercel](https://vercel.com/)**:
 
 ---
 
+## Author
+
+* **GitHub**: [ColdTea15](https://github.com/ColdTea15)
+
+---
+
 ## 📄 License
 
 MIT License
