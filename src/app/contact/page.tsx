@@ -2,16 +2,9 @@
 import { useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Image from "next/image";
-import { 
-  ChatBubbleLeftRightIcon,
-  EnvelopeIcon,
-  PhoneIcon,
-  ClockIcon,
-  ShieldCheckIcon,
-  BoltIcon,
-  StarIcon
-} from '@heroicons/react/24/solid';
+import { PhoneIcon} from '@heroicons/react/24/solid';
+import { ShieldCheckIcon, BoltIcon, StarIcon, ClockIcon } from '@heroicons/react/24/solid';
+import { ChatBubbleLeftRightIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
 
 const Contact = () => {
   const [isHovered, setIsHovered] = useState<string | null>(null);

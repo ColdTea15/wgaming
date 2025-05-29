@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Link from "next/link";
-import { Star, Shield, Clock, Users, Trophy, ChevronRight, Play, CheckCircle, ArrowRight } from 'lucide-react';
+import { Star, Shield, Clock, Users, Trophy, ChevronRight, Play, ArrowRight } from 'lucide-react';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -13,7 +13,7 @@ const Home = () => {
   const testimonials = [
     { text: "Went from Silver to Diamond in just 3 days! The boosters were professional and kept me updated throughout.", author: "Alex G.", rank: "Diamond 2", avatar: "🎮" },
     { text: "Amazing VP top-up service. Got my points instantly and customer support was incredible!", author: "Sarah L.", rank: "Immortal 1", avatar: "👑" },
-    { text: "Best boosting service I've ever used. Safe, fast, and the results speak for themselves!", author: "Kevin T.", rank: "Radiant", avatar: "⚡" },
+    { text: "Best boosting service I&apos;ve ever used. Safe, fast, and the results speak for themselves!", author: "Kevin T.", rank: "Radiant", avatar: "⚡" },
   ];
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Home = () => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [testimonials.length]);
 
   useEffect(() => {
     const animateStats = () => {

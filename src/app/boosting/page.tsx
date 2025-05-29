@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
-import Navbar from "@/app/components/Navbar";
-import Footer from "@/app/components/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { 
   TrophyIcon, 
   StarIcon, 
@@ -20,7 +20,15 @@ import {
 
 interface Rank {
   name: string;
-  tier: string;
+  price: number;
+  color: string;
+}
+
+interface BoostingOption {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
   color: string;
 }
 
@@ -44,31 +52,31 @@ interface Service {
 }
 
 const ranks: Rank[] = [
-  { name: 'Iron 1', tier: 'iron', color: 'from-gray-600 to-gray-800' },
-  { name: 'Iron 2', tier: 'iron', color: 'from-gray-600 to-gray-800' },
-  { name: 'Iron 3', tier: 'iron', color: 'from-gray-600 to-gray-800' },
-  { name: 'Bronze 1', tier: 'bronze', color: 'from-amber-700 to-amber-900' },
-  { name: 'Bronze 2', tier: 'bronze', color: 'from-amber-700 to-amber-900' },
-  { name: 'Bronze 3', tier: 'bronze', color: 'from-amber-700 to-amber-900' },
-  { name: 'Silver 1', tier: 'silver', color: 'from-gray-400 to-gray-600' },
-  { name: 'Silver 2', tier: 'silver', color: 'from-gray-400 to-gray-600' },
-  { name: 'Silver 3', tier: 'silver', color: 'from-gray-400 to-gray-600' },
-  { name: 'Gold 1', tier: 'gold', color: 'from-yellow-500 to-yellow-700' },
-  { name: 'Gold 2', tier: 'gold', color: 'from-yellow-500 to-yellow-700' },
-  { name: 'Gold 3', tier: 'gold', color: 'from-yellow-500 to-yellow-700' },
-  { name: 'Platinum 1', tier: 'platinum', color: 'from-cyan-400 to-cyan-600' },
-  { name: 'Platinum 2', tier: 'platinum', color: 'from-cyan-400 to-cyan-600' },
-  { name: 'Platinum 3', tier: 'platinum', color: 'from-cyan-400 to-cyan-600' },
-  { name: 'Diamond 1', tier: 'diamond', color: 'from-purple-400 to-purple-600' },
-  { name: 'Diamond 2', tier: 'diamond', color: 'from-purple-400 to-purple-600' },
-  { name: 'Diamond 3', tier: 'diamond', color: 'from-purple-400 to-purple-600' },
-  { name: 'Ascendant 1', tier: 'ascendant', color: 'from-emerald-400 to-emerald-600' },
-  { name: 'Ascendant 2', tier: 'ascendant', color: 'from-emerald-400 to-emerald-600' },
-  { name: 'Ascendant 3', tier: 'ascendant', color: 'from-emerald-400 to-emerald-600' },
-  { name: 'Immortal 1', tier: 'immortal', color: 'from-pink-400 to-pink-600' },
-  { name: 'Immortal 2', tier: 'immortal', color: 'from-pink-400 to-pink-600' },
-  { name: 'Immortal 3', tier: 'immortal', color: 'from-pink-400 to-pink-600' },
-  { name: 'Radiant', tier: 'radiant', color: 'from-yellow-300 to-orange-500' }
+  { name: 'Iron 1', price: 1, color: 'from-gray-600 to-gray-800' },
+  { name: 'Iron 2', price: 2, color: 'from-gray-600 to-gray-800' },
+  { name: 'Iron 3', price: 3, color: 'from-gray-600 to-gray-800' },
+  { name: 'Bronze 1', price: 4, color: 'from-amber-700 to-amber-900' },
+  { name: 'Bronze 2', price: 5, color: 'from-amber-700 to-amber-900' },
+  { name: 'Bronze 3', price: 6, color: 'from-amber-700 to-amber-900' },
+  { name: 'Silver 1', price: 7, color: 'from-gray-400 to-gray-600' },
+  { name: 'Silver 2', price: 8, color: 'from-gray-400 to-gray-600' },
+  { name: 'Silver 3', price: 9, color: 'from-gray-400 to-gray-600' },
+  { name: 'Gold 1', price: 10, color: 'from-yellow-500 to-yellow-700' },
+  { name: 'Gold 2', price: 11, color: 'from-yellow-500 to-yellow-700' },
+  { name: 'Gold 3', price: 12, color: 'from-yellow-500 to-yellow-700' },
+  { name: 'Platinum 1', price: 13, color: 'from-cyan-400 to-cyan-600' },
+  { name: 'Platinum 2', price: 14, color: 'from-cyan-400 to-cyan-600' },
+  { name: 'Platinum 3', price: 15, color: 'from-cyan-400 to-cyan-600' },
+  { name: 'Diamond 1', price: 16, color: 'from-purple-400 to-purple-600' },
+  { name: 'Diamond 2', price: 17, color: 'from-purple-400 to-purple-600' },
+  { name: 'Diamond 3', price: 18, color: 'from-purple-400 to-purple-600' },
+  { name: 'Ascendant 1', price: 19, color: 'from-emerald-400 to-emerald-600' },
+  { name: 'Ascendant 2', price: 20, color: 'from-emerald-400 to-emerald-600' },
+  { name: 'Ascendant 3', price: 21, color: 'from-emerald-400 to-emerald-600' },
+  { name: 'Immortal 1', price: 22, color: 'from-pink-400 to-pink-600' },
+  { name: 'Immortal 2', price: 23, color: 'from-pink-400 to-pink-600' },
+  { name: 'Immortal 3', price: 24, color: 'from-pink-400 to-pink-600' },
+  { name: 'Radiant', price: 25, color: 'from-yellow-300 to-orange-500' }
 ];
 
 const boostTypes: BoostType[] = [
@@ -128,12 +136,13 @@ const services: Service[] = [
 ];
 
 const Boosting = () => {
+  const [selectedRank, setSelectedRank] = useState<Rank | null>(null);
+  const [selectedOption, setSelectedOption] = useState<BoostingOption | null>(null);
   const [currentRank, setCurrentRank] = useState<Rank | null>(null);
   const [desiredRank, setDesiredRank] = useState<Rank | null>(null);
-  const [boostType, setBoostType] = useState('solo');
-  const [placementMatches, setPlacementMatches] = useState(1);
-  const [winsCount, setWinsCount] = useState(1);
-  const [levelsCount, setLevelsCount] = useState(1);
+  const [placementMatches, setPlacementMatches] = useState<number>(0);
+  const [winsCount, setWinsCount] = useState<number>(0);
+  const [levelsCount, setLevelsCount] = useState<number>(0);
   const [activeService, setActiveService] = useState('rank');
 
   const calculateRankPrice = () => {
@@ -143,13 +152,13 @@ const Boosting = () => {
     if (startIndex >= endIndex) return 0;
     const rankDifference = endIndex - startIndex;
     const basePrice = rankDifference * 4.99;
-    const selectedBoost = boostTypes.find(b => b.id === boostType);
+    const selectedBoost = boostTypes.find(b => b.id === 'solo');
     return basePrice * (selectedBoost?.multiplier || 1);
   };
 
   const getServicePrice = (serviceId: string): number => {
     const service = services.find(s => s.id === serviceId);
-    const selectedBoost = boostTypes.find(b => b.id === boostType);
+    const selectedBoost = boostTypes.find(b => b.id === 'solo');
     
     if (!service || !selectedBoost) return 0;
     
@@ -246,14 +255,14 @@ const Boosting = () => {
             {boostTypes.map((type) => (
               <div
                 key={type.id}
-                onClick={() => setBoostType(type.id)}
+                onClick={() => setSelectedOption(null)}
                 className={`relative p-6 rounded-2xl cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-                  boostType === type.id
+                  selectedOption === null
                     ? 'bg-gradient-to-br from-purple-600 to-blue-600 ring-2 ring-cyan-400/50 shadow-2xl'
                     : 'bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/50'
                 }`}
               >
-                {type.popular && (
+                {selectedOption && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                     <div className="bg-gradient-to-r from-purple-400 to-blue-400 text-white px-4 py-1 rounded-full text-sm font-bold flex items-center gap-1">
                       <StarIcon className="h-4 w-4" />

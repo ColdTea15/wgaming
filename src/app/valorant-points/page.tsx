@@ -27,9 +27,8 @@ interface VPPackage {
 interface PaymentMethod {
   id: string;
   name: string;
-  icon: any;
+  icon: React.ComponentType;
   color: string;
-  fee: number;
 }
 
 const vpPackages = [
@@ -118,6 +117,7 @@ const ValorantPoints = () => {
   const [riotID, setRiotID] = useState("");
   const [selectedVP, setSelectedVP] = useState<VPPackage | null>(null);
   const [selectedPayment, setSelectedPayment] = useState<PaymentMethod | null>(null);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [email, setEmail] = useState("");
   const [subscribeSMS, setSubscribeSMS] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);

@@ -2,16 +2,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { 
-  TrophyIcon, 
-  StarIcon, 
-  ShieldCheckIcon, 
-  ClockIcon, 
-  UserGroupIcon,
-  BoltIcon,
-  CheckCircleIcon,
-  ArrowTrendingUpIcon
-} from '@heroicons/react/24/solid';
+import { ShieldCheckIcon, BoltIcon, StarIcon, ClockIcon } from '@heroicons/react/24/solid';
 
 const About = () => {
   const [stats, setStats] = useState({ boosted: 0, customers: 0, rating: 0 });
