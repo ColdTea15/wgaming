@@ -9,12 +9,9 @@ import {
   ClockIcon, 
   UserGroupIcon, 
   UserIcon,
-  ChartBarIcon,
-  CurrencyDollarIcon,
   CheckCircleIcon,
   ArrowTrendingUpIcon,
   BoltIcon,
-  GiftIcon,
   ShoppingCartIcon
 } from '@heroicons/react/24/solid';
 
@@ -38,7 +35,7 @@ interface BoostType {
   description: string;
   multiplier: number;
   features: string[];
-  icon: any;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   popular: boolean;
 }
 
@@ -47,7 +44,7 @@ interface Service {
   name: string;
   description: string;
   basePrice: number;
-  icon: any;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   color: string;
 }
 
@@ -136,41 +133,30 @@ const services: Service[] = [
 ];
 
 const Boosting = () => {
-  const [selectedRank, setSelectedRank] = useState<Rank | null>(null);
-  const [selectedOption, setSelectedOption] = useState<BoostingOption | null>(null);
   const [currentRank, setCurrentRank] = useState<Rank | null>(null);
-  const [desiredRank, setDesiredRank] = useState<Rank | null>(null);
-  const [placementMatches, setPlacementMatches] = useState<number>(0);
-  const [winsCount, setWinsCount] = useState<number>(0);
-  const [levelsCount, setLevelsCount] = useState<number>(0);
   const [activeService, setActiveService] = useState('rank');
+  const [selectedBoostType, setSelectedBoostType] = useState<string | null>(null);
 
   const calculateRankPrice = () => {
-    if (!currentRank || !desiredRank) return 0;
+    if (!currentRank) return 0;
     const startIndex = ranks.findIndex(r => r.name === currentRank.name);
-    const endIndex = ranks.findIndex(r => r.name === desiredRank.name);
+    const endIndex = ranks.findIndex(r => r.name === currentRank.name);
     if (startIndex >= endIndex) return 0;
     const rankDifference = endIndex - startIndex;
     const basePrice = rankDifference * 4.99;
-    const selectedBoost = boostTypes.find(b => b.id === 'solo');
+    const selectedBoost = boostTypes.find(b => b.id === selectedBoostType);
     return basePrice * (selectedBoost?.multiplier || 1);
   };
 
   const getServicePrice = (serviceId: string): number => {
     const service = services.find(s => s.id === serviceId);
-    const selectedBoost = boostTypes.find(b => b.id === 'solo');
+    const selectedBoost = boostTypes.find(b => b.id === selectedBoostType);
     
     if (!service || !selectedBoost) return 0;
     
     switch(serviceId) {
       case 'rank':
         return calculateRankPrice();
-      case 'placement':
-        return placementMatches * service.basePrice * selectedBoost.multiplier;
-      case 'wins':
-        return winsCount * service.basePrice * selectedBoost.multiplier;
-      case 'level':
-        return levelsCount * service.basePrice * selectedBoost.multiplier;
       default:
         return 0;
     }
@@ -179,10 +165,6 @@ const Boosting = () => {
   const getRankGradient = (rank: Rank | null): string => {
     return rank ? rank.color : 'from-gray-600 to-gray-800';
   };
-
-  const placementPrice = placementMatches * 9.99;
-  const winPrice = winsCount * 3.99;
-  const levelPrice = levelsCount * 2.99;
 
   return (
     <div className="text-white min-h-screen flex flex-col relative overflow-hidden">
@@ -255,14 +237,14 @@ const Boosting = () => {
             {boostTypes.map((type) => (
               <div
                 key={type.id}
-                onClick={() => setSelectedOption(null)}
+                onClick={() => setSelectedBoostType(type.id)}
                 className={`relative p-6 rounded-2xl cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-                  selectedOption === null
+                  selectedBoostType === type.id
                     ? 'bg-gradient-to-br from-purple-600 to-blue-600 ring-2 ring-cyan-400/50 shadow-2xl'
                     : 'bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600/50'
                 }`}
               >
-                {selectedOption && (
+                {type.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                     <div className="bg-gradient-to-r from-purple-400 to-blue-400 text-white px-4 py-1 rounded-full text-sm font-bold flex items-center gap-1">
                       <StarIcon className="h-4 w-4" />

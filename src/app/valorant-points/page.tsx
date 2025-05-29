@@ -27,11 +27,11 @@ interface VPPackage {
 interface PaymentMethod {
   id: string;
   name: string;
-  icon: React.ComponentType;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   color: string;
 }
 
-const vpPackages = [
+const vpPackages: VPPackage[] = [
   { 
     id: 1, 
     amount: "475 VP", 
@@ -82,34 +82,30 @@ const vpPackages = [
   },
 ];
 
-const paymentMethods = [
+const paymentMethods: PaymentMethod[] = [
   { 
     id: "fpx", 
     name: "FPX Online Banking", 
     icon: CreditCardIcon, 
-    color: "blue",
-    fee: 0 
+    color: "blue"
   },
   { 
     id: "tng", 
     name: "Touch 'n Go", 
     icon: CreditCardIcon, 
-    color: "yellow",
-    fee: 0 
+    color: "yellow"
   },
   { 
     id: "grab", 
     name: "GrabPay", 
     icon: CreditCardIcon, 
-    color: "green",
-    fee: 0 
+    color: "green"
   },
   { 
     id: "boost", 
     name: "Boost", 
     icon: CreditCardIcon, 
-    color: "purple",
-    fee: 0 
+    color: "purple"
   },
 ];
 
@@ -117,7 +113,6 @@ const ValorantPoints = () => {
   const [riotID, setRiotID] = useState("");
   const [selectedVP, setSelectedVP] = useState<VPPackage | null>(null);
   const [selectedPayment, setSelectedPayment] = useState<PaymentMethod | null>(null);
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [email, setEmail] = useState("");
   const [subscribeSMS, setSubscribeSMS] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -159,16 +154,6 @@ const ValorantPoints = () => {
         }\n\nYour VP will be credited within 5 minutes!`
       );
     }, 2000);
-  };
-
-  const getPaymentButtonClass = (method: PaymentMethod) => {
-    const colorClasses: Record<string, string> = {
-      blue: selectedPayment?.id === method.id ? "bg-blue-700 ring-2 ring-blue-400" : "bg-blue-600 hover:bg-blue-700",
-      yellow: selectedPayment?.id === method.id ? "bg-yellow-600 ring-2 ring-yellow-400" : "bg-yellow-500 hover:bg-yellow-600",
-      green: selectedPayment?.id === method.id ? "bg-green-700 ring-2 ring-green-400" : "bg-green-600 hover:bg-green-700",
-      purple: selectedPayment?.id === method.id ? "bg-purple-700 ring-2 ring-purple-400" : "bg-purple-600 hover:bg-purple-700",
-    };
-    return colorClasses[method.color] || colorClasses.blue;
   };
 
   return (

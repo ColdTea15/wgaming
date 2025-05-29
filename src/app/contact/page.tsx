@@ -2,14 +2,26 @@
 import { useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { PhoneIcon} from '@heroicons/react/24/solid';
+import { PhoneIcon } from '@heroicons/react/24/solid';
 import { ShieldCheckIcon, BoltIcon, StarIcon, ClockIcon } from '@heroicons/react/24/solid';
 import { ChatBubbleLeftRightIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
 
-const Contact = () => {
-  const [isHovered, setIsHovered] = useState<string | null>(null);
+interface ContactMethod {
+  id: string;
+  name: string;
+  img: string;
+  color: string;
+  bgColor: string;
+  gradient: string;
+  link: string;
+  buttonText: string;
+  hover: string;
+  description: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
 
-  const contactMethods = [
+const Contact = () => {
+  const contactMethods: ContactMethod[] = [
     {
       id: "whatsapp",
       name: "WhatsApp",
@@ -96,8 +108,6 @@ const Contact = () => {
           {contactMethods.map((contact) => (
             <div
               key={contact.id}
-              onMouseEnter={() => setIsHovered(contact.id)}
-              onMouseLeave={() => setIsHovered(null)}
               className="group relative bg-slate-900/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 shadow-2xl transition-all duration-300 transform hover:scale-105"
             >
               <div className="flex flex-col items-center text-center space-y-4">

@@ -175,7 +175,7 @@ const Home = () => {
               <div className="text-center">
                 <div className="text-5xl mb-4">{testimonials[currentTestimonial].avatar}</div>
                 <p className="text-xl text-gray-300 italic mb-6 leading-relaxed">
-                  "{testimonials[currentTestimonial].text}"
+                  &ldquo;{testimonials[currentTestimonial].text}&rdquo;
                 </p>
                 <div className="flex justify-center items-center gap-4">
                   <div>
