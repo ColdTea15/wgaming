@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Home, Trophy, Coins, HelpCircle, Mail, Info } from "lucide-react";
+import {
+  Menu,
+  X,
+  Home,
+  Trophy,
+  Coins,
+  HelpCircle,
+  Mail,
+  Info,
+} from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +27,7 @@ const Navbar = () => {
     <>
       <nav className="fixed top-0 left-0 right-0 z-[100] bg-slate-900 bg-[radial-gradient(#ffffff10_1px,transparent_1px)] bg-[length:20px_20px] border-b border-purple-500/20 p-4 shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]">
         <div className="container mx-auto flex justify-between items-center">
+          {/* Brand */}
           <Link
             href="/"
             className="text-2xl font-bold bg-gradient-to-r from-purple-500 via-cyan-400 to-blue-500 text-transparent bg-clip-text hover:opacity-80 transition-opacity"
@@ -25,7 +35,7 @@ const Navbar = () => {
             W Gaming
           </Link>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu toggle */}
           <button
             className="md:hidden text-white p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -34,31 +44,27 @@ const Navbar = () => {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex space-x-12">
+          {/* Desktop nav */}
+          <ul className="hidden md:flex space-x-10">
             {navItems.map((item) => (
-              <li key={item.href} className="min-w-[40px]">
+              <li key={item.href} className="relative group text-center">
                 <Link
                   href={item.href}
-                  className="text-gray-300 hover:text-white transition-all duration-300 relative group flex items-center"
-                  title={item.label}
+                  className="flex flex-col items-center text-gray-300 hover:text-white transition-all duration-300"
                 >
-                  <div className="relative flex items-center overflow-visible">
-                    <div className="flex items-center transition-all duration-300 group-hover:-translate-x-1 group-hover:scale-110 group-active:rotate-3">
-                      <item.icon className="w-6 h-6" />
-                    </div>
-                    <span className="absolute left-6 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap transform translate-x-[-100%] group-hover:translate-x-0 text-sm bg-slate-800/90 px-2 py-1 rounded-md backdrop-blur-sm border border-purple-500/20 shadow-lg">
-                      {item.label}
-                    </span>
-                  </div>
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                  <item.icon className="w-6 h-6 transition-transform duration-300 group-hover:scale-125 group-hover:text-purple-400" />
+                  {/* Tooltip under icon */}
+                  <span className="absolute top-9 text-sm opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 bg-slate-800/90 text-white px-2 py-1 rounded-md shadow-lg mt-2 border border-purple-500/20">
+                    {item.label}
+                  </span>
+                  <span className="mt-1 h-0.5 w-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 transition-all duration-500 group-hover:w-6 rounded-full shadow-md"></span>
                 </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile nav */}
         <div
           className={`md:hidden transition-all duration-300 transform ${
             isMenuOpen
@@ -82,9 +88,9 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
-      <div className="pt-20">
-        {/* This div will add padding to the top of all content */}
-      </div>
+
+      {/* Padding offset for fixed nav */}
+      <div className="pt-20" />
     </>
   );
 };
