@@ -93,56 +93,56 @@ const FAQ = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="text-center py-16 px-4 relative">
+      <section className="text-center py-8 sm:py-12 md:py-16 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent blur-3xl"></div>
         <div className="relative z-10">
-          <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-purple-500 via-cyan-400 to-blue-500 text-transparent bg-clip-text drop-shadow-2xl mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-purple-500 via-cyan-400 to-blue-500 text-transparent bg-clip-text drop-shadow-2xl mb-2 sm:mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-xl text-gray-300 mb-8">Find answers to common questions about our services</p>
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-4 sm:mb-8">Find answers to common questions about our services</p>
           
           {/* Trust Badges */}
-          <div className="flex justify-center items-center gap-6 flex-wrap">
-            <div className="flex items-center gap-2 bg-purple-900/30 px-4 py-2 rounded-full border border-purple-500/50">
-              <ShieldCheckIcon className="h-5 w-5 text-purple-400" />
-              <span className="text-purple-400 font-semibold">Account Safe</span>
+          <div className="flex justify-center items-center gap-2 sm:gap-4 md:gap-6 flex-wrap">
+            <div className="flex items-center gap-1 sm:gap-2 bg-purple-900/30 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full border border-purple-500/50">
+              <ShieldCheckIcon className="h-4 w-4 sm:h-5 sm:w-5 text-purple-400" />
+              <span className="text-purple-400 font-semibold text-sm sm:text-base">Account Safe</span>
             </div>
-            <div className="flex items-center gap-2 bg-cyan-900/30 px-4 py-2 rounded-full border border-cyan-500/50">
-              <BoltIcon className="h-5 w-5 text-cyan-400" />
-              <span className="text-cyan-400 font-semibold">Fast Delivery</span>
+            <div className="flex items-center gap-1 sm:gap-2 bg-cyan-900/30 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full border border-cyan-500/50">
+              <BoltIcon className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-400" />
+              <span className="text-cyan-400 font-semibold text-sm sm:text-base">Fast Delivery</span>
             </div>
-            <div className="flex items-center gap-2 bg-blue-900/30 px-4 py-2 rounded-full border border-blue-500/50">
-              <StarIcon className="h-5 w-5 text-blue-400" />
-              <span className="text-blue-400 font-semibold">Pro Players</span>
+            <div className="flex items-center gap-1 sm:gap-2 bg-blue-900/30 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full border border-blue-500/50">
+              <StarIcon className="h-4 w-4 sm:h-5 sm:w-5 text-blue-400" />
+              <span className="text-blue-400 font-semibold text-sm sm:text-base">Pro Players</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Search and Filter Section */}
-      <section className="py-10 bg-gradient-to-r from-gray-800/30 to-gray-700/30">
-        <div className="container mx-auto px-6">
+      <section className="py-6 sm:py-8 md:py-10 bg-gradient-to-r from-gray-800/30 to-gray-700/30">
+        <div className="container mx-auto px-4 sm:px-6">
           {/* Search Bar */}
-          <div className="relative max-w-2xl mx-auto mb-8">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <Search className="h-6 w-6 text-gray-400" />
+          <div className="relative max-w-2xl mx-auto mb-6 sm:mb-8">
+            <div className="absolute inset-y-0 left-0 pl-3 sm:pl-4 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400" />
             </div>
             <input
               type="text"
               placeholder="Search for answers..."
-              className="w-full pl-12 pr-4 py-4 bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300"
+              className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 bg-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-xl sm:rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 text-sm sm:text-base"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                className={`px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base ${
                   selectedCategory === category
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/25'
                     : 'bg-slate-900/50 backdrop-blur-sm text-gray-300 hover:bg-slate-800/50 border border-slate-700/50'
@@ -156,40 +156,40 @@ const FAQ = () => {
       </section>
 
       {/* FAQ Section */}
-      <main className="container mx-auto px-6 py-10">
+      <main className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-10">
         <div className="max-w-4xl mx-auto">
           {filteredFAQs.length === 0 ? (
-            <div className="text-center py-20">
-              <h3 className="text-2xl font-bold text-gray-400 mb-4">No results found</h3>
-              <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+            <div className="text-center py-12 sm:py-20">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-400 mb-2 sm:mb-4">No results found</h3>
+              <p className="text-sm sm:text-base text-gray-500">Try adjusting your search or filter criteria</p>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {filteredFAQs.map((faq, index) => (
                 <div
                   key={index}
-                  className="group bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:bg-slate-800/50"
+                  className="group bg-slate-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-slate-700/50 overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:bg-slate-800/50"
                 >
                   <div
-                    className="p-6 cursor-pointer"
+                    className="p-4 sm:p-6 cursor-pointer"
                     onClick={() => toggleFAQ(index)}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="p-3 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-xl">
+                      <div className="flex items-center gap-3 sm:gap-4">
+                        <div className="p-2 sm:p-3 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-lg sm:rounded-xl">
                           {faq.icon}
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-white">
+                          <h3 className="text-base sm:text-xl font-bold text-white">
                             {faq.question}
                           </h3>
-                          <div className="text-sm text-purple-400 font-semibold mt-1">
+                          <div className="text-xs sm:text-sm text-purple-400 font-semibold mt-0.5 sm:mt-1">
                             {faq.category}
                           </div>
                         </div>
                       </div>
                       <ChevronDown
-                        className={`w-6 h-6 text-gray-400 transition-transform duration-300 ${
+                        className={`w-5 h-5 sm:w-6 sm:h-6 text-gray-400 transition-transform duration-300 ${
                           openIndex === index ? 'transform rotate-180 text-purple-400' : ''
                         }`}
                       />
@@ -197,10 +197,10 @@ const FAQ = () => {
                   </div>
                   
                   {openIndex === index && (
-                    <div className="px-6 pb-6">
-                      <div className="pl-20">
-                        <div className="bg-slate-800/50 rounded-xl p-6 border-l-4 border-purple-500">
-                          <p className="text-gray-300 leading-relaxed">
+                    <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                      <div className="pl-16 sm:pl-20">
+                        <div className="bg-slate-800/50 rounded-lg sm:rounded-xl p-4 sm:p-6 border-l-4 border-purple-500">
+                          <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                             {faq.answer}
                           </p>
                         </div>
