@@ -21,14 +21,6 @@ interface Rank {
   color: string;
 }
 
-interface BoostingOption {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  color: string;
-}
-
 interface BoostType {
   id: string;
   name: string;

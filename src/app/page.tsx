@@ -136,7 +136,7 @@ const Home = () => {
       {/* Why Choose Us Section */}
       <section className="py-20 px-6 text-center">
         <h2 className="text-4xl font-black text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
-          Why We're <span className="text-purple-400">#1</span>
+          Why We&apos;re <span className="text-purple-400">#1</span>
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="group relative p-6 bg-gray-800/30 backdrop-blur-sm rounded-2xl border border-gray-700/50 transform transition-all duration-500 hover:scale-105 hover:bg-gray-800/50">
